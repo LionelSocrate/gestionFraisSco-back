@@ -1,7 +1,21 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  name: {
+    type: String,
+    trim: true,
+    uppercase: true,
+    required: true,
+    default: '',
+  },
+  firstname: {
+    type: String,
+    trim: true,
+    uppercase: true,
+    required: true,
+    default: '',
+  },
   email: {
     type: String,
     lowercase: true,
@@ -15,6 +29,17 @@ const userSchema = new Schema({
     minlength: 6,
     max: 1024,
   },
+  isAdmin: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  isBlocked: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 });
 
-module.exports = mongoose.models.users || mongoose.model("users", userSchema);
+const UserModel = mongoose.models.users || mongoose.model('users', userSchema);
+module.exports = UserModel;
