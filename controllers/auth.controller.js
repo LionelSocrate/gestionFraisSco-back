@@ -32,14 +32,14 @@ module.exports.signIn = async (req, res) => {
     }
 
     if (user.isAdmin) {
-      if (password === 'enipay@admin-pass;24') {
+      if (password === 'admin@enipay-pass;24') {
         const token = createToken({ id: user._id });
         return res.status(200).json({ user: user._id, token });
       } else {
         return res.json({ error: true });
       }
     } else {
-      if (password === 'enipay@user-pass;24') {
+      if (password === 'user@enipay-pass;24') {
         const token = createToken({ id: user._id });
         return res.status(200).json({ user: user._id, token });
       } else {
